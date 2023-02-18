@@ -6,6 +6,7 @@ const artistsButton = document.querySelector(".artist-button");
 const songButton = document.querySelector(".song-button");
 const usernameButton = document.querySelector(".username-button");
 const userameInput = document.querySelector(".username-input");
+const testButton = document.querySelector(".test-button");
 
 usersButton.addEventListener("click", () => {
   axios.get(`http://localhost:3000/users/${auth_token}`).then((res) => {
@@ -27,6 +28,15 @@ usernameButton.addEventListener("click", () => {
   userameInput.value = "enter username";
   axios
     .get(`http://localhost:3000/get_username/${auth_token}/${username}`)
+    .then((res) => {
+      console.log(res.data);
+    });
+});
+testButton.addEventListener("click", () => {
+  const username = userameInput.value;
+  userameInput.value = "enter username";
+  axios
+    .get(`http://localhost:3000/test/${auth_token}/${username}`)
     .then((res) => {
       console.log(res.data);
     });

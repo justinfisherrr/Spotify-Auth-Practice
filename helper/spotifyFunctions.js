@@ -25,4 +25,17 @@ async function getByUsername(auth_token, username) {
   const result = await spotifyApi.getUser(username);
   return result.body;
 }
-module.exports = { getUser, getTopArtists, getTopSongs, getByUsername };
+async function anyFunction(auth_token) {
+  var spotifyApi = new SpotifyAPI();
+  spotifyApi.setAccessToken(auth_token);
+  //Chose your function here
+  const result = await spotifyApi.getUser();
+  return result.body;
+}
+module.exports = {
+  getUser,
+  getTopArtists,
+  getTopSongs,
+  getByUsername,
+  anyFunction,
+};

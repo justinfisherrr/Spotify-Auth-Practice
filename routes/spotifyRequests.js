@@ -5,6 +5,7 @@ const {
   getTopArtists,
   getTopSongs,
   getByUsername,
+  anyFunction,
 } = require("../helper/spotifyFunctions");
 
 router.get("/users/:auth", async (req, res) => {
@@ -21,6 +22,10 @@ router.get("/songs/:auth", async (req, res) => {
 });
 router.get("/get_username/:auth/:username", async (req, res) => {
   const results = await getByUsername(req.params.auth, req.params.username);
+  res.send(results);
+});
+router.get("/test/:auth", async (req, res) => {
+  const results = await anyFunction(req.params.auth);
   res.send(results);
 });
 
